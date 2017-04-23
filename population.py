@@ -35,5 +35,5 @@ class POPULATION:
   def Show_Best(self):
     for i in self.population:
       print "Best robot being displayed:", self.population[i].fitness
-      self.population[i].Start_Evaluation(False, False)
+      self.population[i].Start_Evaluation(True, False)
 

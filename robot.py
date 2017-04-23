@@ -14,6 +14,8 @@ class ROBOT:
         #Main body
         sim.Send_Box(objectID=0, x=0, y=0, z=con.Leg + con.Radius, length=2 *con.Leg, 
                      width=con.Leg, height=2 * con.Radius, r=0.5, g=0.5, b=0.5)
+        # sim.Send_Cylinder(objectID=0, x=0, y=0, z=con.Leg + con.Radius,
+        #              r1=1, r2=0, r3=0, length=2 *con.Leg, radius=con.Leg/2, r=0.5, g=0.5, b=0.5)
         #Dark Red top 
         sim.Send_Cylinder(objectID=1, x=con.Leg_Offset, y=con.Leg, z=con.Leg + con.Radius, 
                           r1=0, r2=1, r3=0, length=con.Leg, radius=con.Radius, r=0.5, g=0, b=0)
@@ -38,33 +40,51 @@ class ROBOT:
         #Light Purple bottom
         sim.Send_Cylinder(objectID=8, x=-con.Leg_Offset, y=-1.5 * (con.Leg), z=0.5 * con.Leg + con.Radius, 
                           r1=0, r2=0, r3=1, length=con.Leg, radius=con.Radius, r=1, g=0, b=1) 
-        
+        # #Robot neck
+        # sim.Send_Cylinder(objectID=9, x=con.Leg, y=0, z= 1.5*con.Leg + con.Radius, 
+        #           r1=0.5, r2=0, r3=0.5, length=con.Radius, radius=con.Radius, r=0.7, g=0.7, b=0.7) 
+        # #Robot head
+        # sim.Send_Cylinder(objectID=10, x=con.Leg*1.5, y=0, z=1.7 * con.Leg + con.Radius, 
+        #           r1=1, r2=0, r3=0, length=con.Radius*2, radius=con.Radius*1.5, r=0.5, g=0.5, b=0.5) 
+        # #Robot tail
+        # sim.Send_Cylinder(objectID=11, x=-con.Leg*1.5, y=0, z=con.Leg + con.Radius, 
+        #           r1=1, r2=0, r3=0, length=con.Leg, radius=0.02, r=0.5, g=0.5, b=0.5) 
+
+
     #Joints
     def Send_Joints(self, sim):
         #Body to dark red 
-        sim.Send_Joint(jointID=0, firstObjectID=0, secondObjectID=1, x=0,y=con.Leg / 2, z=con.Leg + con.Radius, n1=-1, n2=0, n3=0)
+        sim.Send_Joint(jointID=0, firstObjectID=0, secondObjectID=1, x=con.Leg_Offset, y=con.Leg / 2, z=con.Leg + con.Radius, n1=-1, n2=0, n3=0)
        
         #Dark red to light red 
-        sim.Send_Joint(jointID=1, firstObjectID=1, secondObjectID=5, x=0, y=1.5 *con.Leg, z=con.Leg + con.Radius, n1=-1, n2=0, n3=0)
+        sim.Send_Joint(jointID=1, firstObjectID=1, secondObjectID=5, x=con.Leg_Offset, y=1.5 *con.Leg, z=con.Leg + con.Radius, n1=-1, n2=0, n3=0)
        
         #Body to dark green  
-        sim.Send_Joint(jointID=2, firstObjectID=0, secondObjectID=2, x=con.Leg/2, y=0, z=con.Leg + con.Radius, n1=0, n2=1, n3=0) 
+        sim.Send_Joint(jointID=2, firstObjectID=0, secondObjectID=2, x=-con.Leg_Offset, y=con.Leg / 2, z=con.Leg + con.Radius, n1=-1, n2=0, n3=0) 
         
         #Dark green to light green
-        sim.Send_Joint(jointID=3, firstObjectID=2, secondObjectID=6, x=1.5*con.Leg, y=0, z=con.Leg + con.Radius, n1=0, n2=1, n3=0) 
+        sim.Send_Joint(jointID=3, firstObjectID=2, secondObjectID=6, x=-con.Leg_Offset, y=1.5 *con.Leg, z=con.Leg + con.Radius, n1=-1, n2=0, n3=0) 
         
         #Body to dark blue  
-        sim.Send_Joint(jointID=4, firstObjectID=0, secondObjectID=3, x=0, y=-con.Leg/2, z=con.Leg + con.Radius, n1=1, n2=0, n3=0) 
+        sim.Send_Joint(jointID=4, firstObjectID=0, secondObjectID=3, x=con.Leg_Offset, y=-con.Leg/2, z=con.Leg + con.Radius, n1=1, n2=0, n3=0) 
        
         #Dark blue to light blue
-        sim.Send_Joint(jointID=5, firstObjectID=3, secondObjectID=7, x=0, y=-1.5*con.Leg, z=con.Leg + con.Radius, n1=1, n2=0, n3=0) 
+        sim.Send_Joint(jointID=5, firstObjectID=3, secondObjectID=7, x=con.Leg_Offset, y=-1.5*con.Leg, z=con.Leg + con.Radius, n1=1, n2=0, n3=0) 
        
         #Body to dark purple
-        sim.Send_Joint(jointID=6, firstObjectID=0, secondObjectID=4, x=-con.Leg/2, y=0, z=con.Leg + con.Radius, n1=0, n2=-1, n3=0) 
+        sim.Send_Joint(jointID=6, firstObjectID=0, secondObjectID=4, x=-con.Leg_Offset, y=-con.Leg / 2, z=con.Leg + con.Radius, n1=1, n2=0, n3=0) 
         
         #Dark purple to light purple
-        sim.Send_Joint(jointID=7, firstObjectID=4, secondObjectID=8, x=-1.5*con.Leg, y=0, z=con.Leg + con.Radius, n1=0, n2=-1, n3=0) 
+        sim.Send_Joint(jointID=7, firstObjectID=4, secondObjectID=8, x=-con.Leg_Offset, y=-1.5 *con.Leg, z=con.Leg + con.Radius, n1=1, n2=0, n3=0) 
 
+        # #Body to neck
+        # sim.Send_Joint(jointID=8, firstObjectID=0, secondObjectID=9, x=con.Leg, y=0, z=1.5*con.Leg + con.Radius, n1=0, n2=1, n3=0) 
+
+        # #Neck to head
+        # sim.Send_Joint(jointID=9, firstObjectID=9, secondObjectID=10, x=-con.Leg_Offset, y=0, z=1.7 * con.Leg + con.Radius, n1=0, n2=1, n3=0) 
+
+        # #Body to tail
+        # sim.Send_Joint(jointID=10, firstObjectID=0, secondObjectID=11, x=-con.Leg*1.5, y=0, z=con.Leg + con.Radius, n1=0, n2=-1, n3=0) 
  
         
     #Sensors

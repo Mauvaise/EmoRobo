@@ -4,7 +4,7 @@ Paused = True
 
 Blind = True
 
-evaluationTime = 100
+evaluationTime = 1000
 
 Leg = 0.2
 

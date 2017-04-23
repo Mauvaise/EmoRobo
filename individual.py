@@ -3,6 +3,7 @@ from robot import ROBOT
 import random
 import math 
 import numpy
+import constants as con
  
 class INDIVIDUAL: 
     def __init__(self, i): 
@@ -16,7 +17,7 @@ class INDIVIDUAL:
 
     def Start_Evaluation(self, paused, blind):
 
-        self.sim = PYROSIM(playPaused=paused,  playBlind=blind, evalTime=1000) 
+        self.sim = PYROSIM(playPaused=paused,  playBlind=blind, evalTime=con.evaluationTime) 
 
         robot = ROBOT(self.sim, self.genome) 
  
