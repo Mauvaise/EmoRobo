@@ -12,7 +12,7 @@ parents.Evaluate()
  
 # parents.Print() 
  
-for g in range (0,100): 
+for g in range (0,1000): 
  
     children = copy.deepcopy(parents) 
  

@@ -4,6 +4,7 @@ import random
 import math 
 import numpy
 import constants as con
+from smile_detect import SMILE
  
 class INDIVIDUAL: 
     def __init__(self, i): 
@@ -21,22 +22,25 @@ class INDIVIDUAL:
 
         robot = ROBOT(self.sim, self.genome) 
  
-        self.sim.Start() 
+        self.sim.Start()
+
+        # self.smile_detect = SMILE()
+
+        # self.smile_detect.Start_Smile_Evaluation(con.evaluationTime)
 
 
     def Compute_Fitness(self):
 
         self.sim.Wait_To_Finish()
 
-        # x = self.sim.Get_Sensor_Data(sensorID=4 , s=0 ) 
-        # z = self.sim.Get_Sensor_Data(sensorID=4 , s=2 ) 
- 
         y = self.sim.Get_Sensor_Data(sensorID=4 , s=1 ) 
 
         self.fitness = y[-1]
 
-        del self.sim
+        # self.smile_detect.End_Smile_Evaluation()
 
+        del self.sim
+        
 
     def Mutate(self): 
  
@@ -51,7 +55,7 @@ class INDIVIDUAL:
  
         if self.genome[geneToMutateX,geneToMutateY] < -1: 
             self.genome[geneToMutateX,geneToMutateY] = -1 
- 
+
  
     def Print(self): 
         print '[', self.ID, self.fitness, ']', 
