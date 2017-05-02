@@ -20,7 +20,7 @@ class SMILE:
 
     def Start_Smile_Evaluation(self, evalTime):
 
-        evalEnd= time.time() + evalTime / 10
+        evalEnd= time.time() + evalTime / 100
 
 
         while time.time() < evalEnd:
@@ -77,4 +77,4 @@ class SMILE:
     def End_Smile_Evaluation(self):
         self.cap.release()
         cv2.destroyAllWindows()
-        print self.smiles
+        print "total smiles", self.smiles

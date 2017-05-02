@@ -12,7 +12,7 @@ parents.Evaluate()
  
 # parents.Print() 
  
-for g in range (0,1000): 
+for g in range (0,0): 
  
     children = copy.deepcopy(parents) 
  
@@ -28,7 +28,7 @@ for g in range (0,1000):
 
 # print "Best: ", parents    
 
-parents.Show_Best()
+# parents.Show_Best()
 
  
 

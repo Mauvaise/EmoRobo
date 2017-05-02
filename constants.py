@@ -1,8 +1,8 @@
 PopSize = 1
 
-Paused = True
+Paused = False
 
-Blind = True
+Blind = False
 
 evaluationTime = 500
 

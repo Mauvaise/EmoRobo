@@ -4,6 +4,7 @@ import random
 import math 
 import numpy
 import constants as con
+
 from smile_detect import SMILE
  
 class INDIVIDUAL: 
@@ -14,7 +15,7 @@ class INDIVIDUAL:
         self.fitness = 0 
 
         self.ID = i
-         
+
 
     def Start_Evaluation(self, paused, blind):
 
@@ -24,22 +25,22 @@ class INDIVIDUAL:
  
         self.sim.Start()
 
-        # self.smile_detect = SMILE()
+        smile_detect = SMILE()
 
-        # self.smile_detect.Start_Smile_Evaluation(con.evaluationTime)
+        smile_detect.Start_Smile_Evaluation(con.evaluationTime)
+
 
 
     def Compute_Fitness(self):
 
         self.sim.Wait_To_Finish()
 
-        y = self.sim.Get_Sensor_Data(sensorID=4 , s=1 ) 
+        y = self.sim.Get_Sensor_Data(sensorID=4) 
 
         self.fitness = y[-1]
 
-        # self.smile_detect.End_Smile_Evaluation()
-
         del self.sim
+
         
 
     def Mutate(self): 

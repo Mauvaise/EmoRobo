@@ -2,13 +2,13 @@ import math
 import sys
 import numpy as np
 
-import constants
-
+import constants as con
+from smile_detect import SMILE
 from subprocess import Popen, PIPE
 
 class PYROSIM:
 
-	def __init__(self,playBlind=False,playPaused=False,evalTime=constants.evaluationTime):
+	def __init__(self,playBlind=False,playPaused=False,evalTime=con.evaluationTime):
 
 		self.numJoints = 0
 
@@ -35,6 +35,8 @@ class PYROSIM:
 		self.Send('EvaluationTime '+str(evalTime)+'\n')
 
 	def Get_Sensor_Data(self,sensorID=0,s=0):
+
+
 
 		return self.dataFromPython[sensorID,s,:]
 
@@ -290,6 +292,9 @@ class PYROSIM:
 		dataFromSimulator = self.simulator.communicate()
 
 		self.Collect_Sensor_Data(dataFromSimulator)
+
+        # smile_detect.End_Smile_Evaluation()
+
 
 # --------------------- Private methods -----------------------------
 
