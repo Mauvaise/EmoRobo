@@ -78,3 +78,7 @@ class SMILE:
         self.cap.release()
         cv2.destroyAllWindows()
         print "total smiles", self.smiles
+
+
+    def Send_Total_Smiles(self):
+        return self.smiles

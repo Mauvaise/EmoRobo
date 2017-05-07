@@ -25,9 +25,11 @@ class INDIVIDUAL:
  
         self.sim.Start()
 
-        smile_detect = SMILE()
+        print 'Current eval ID', self.ID
 
-        smile_detect.Start_Smile_Evaluation(con.evaluationTime)
+        # smile_detect = SMILE()
+
+        # smile_detect.Start_Smile_Evaluation(con.evaluationTime)
 
 
 
@@ -37,7 +39,7 @@ class INDIVIDUAL:
 
         y = self.sim.Get_Sensor_Data(sensorID=4) 
 
-        self.fitness = y[-1]
+        # self.fitness = y[-1]
 
         del self.sim
 
@@ -59,7 +61,7 @@ class INDIVIDUAL:
 
  
     def Print(self): 
-        print '[', self.ID, self.fitness, ']', 
+        print '[', 'ID:', self.ID, 'Fitness:', self.fitness, ']', 
 
         
         
