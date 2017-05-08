@@ -41,7 +41,7 @@ class POPULATION:
  
   def Replace_With(self,other): 
     for i in self.population: 
-      if (self.population[i].fitness > other.population[i].fitness): 
+      if (self.population[i].fitness < other.population[i].fitness): 
         self.population[i] = other.population[i]
         
 
@@ -49,7 +49,7 @@ class POPULATION:
     best = INDIVIDUAL(-1)
 
     for i in self.population:
-      if best.fitness > self.population[i].fitness:
+      if best.fitness < self.population[i].fitness:
         best = self.population[i]
 
     print "Fitness of best robot being displayed:", best.fitness

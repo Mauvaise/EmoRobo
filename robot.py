@@ -84,7 +84,7 @@ class ROBOT:
         sim.Send_Joint(jointID=9, firstObjectID=9, secondObjectID=10, x=con.Leg/2, y=0, z=1.6 * con.Leg + con.Radius, n1=1, n2=0, n3=0) 
 
         #Body to tail
-        sim.Send_Joint(jointID=10, firstObjectID=0, secondObjectID=11, x=-con.Leg*1.5/2, y=0, z=con.Leg + con.Radius, n1=0, n2=-1, n3=0) 
+        sim.Send_Joint(jointID=10, firstObjectID=0, secondObjectID=11, x=-con.Leg*1.7/2, y=0, z=con.Leg + con.Radius, n1=0, n2=-1, n3=0) 
  
         
     #Sensors
@@ -93,12 +93,14 @@ class ROBOT:
         sim.Send_Touch_Sensor(sensorID=1, objectID=6) 
         sim.Send_Touch_Sensor(sensorID=2, objectID=7) 
         sim.Send_Touch_Sensor(sensorID=3, objectID=8)
-        sim.Send_Position_Sensor(sensorID=4, objectID=0) 
+        sim.Send_Position_Sensor(sensorID=4, objectID=0)
+        sim.Send_Position_Sensor(sensorID=5, objectID=10) 
+
  
     #Neurons
     def Send_Neurons(self, sim):
         #Sensor neurons
-        for sn in range(0, 4): 
+        for sn in range(0, 5): 
             sim.Send_Sensor_Neuron(neuronID=sn, sensorID=sn)
 
         #Motor neurons

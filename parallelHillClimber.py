@@ -19,7 +19,7 @@ parents = POPULATION(con.PopSize)
  
 parents.Evaluate() 
   
-for g in range (0,100): 
+for g in range (0,50): 
 
     children = copy.deepcopy(parents) 
  
@@ -30,7 +30,7 @@ for g in range (0,100):
     parents.Replace_With(children) 
  
     print "<<<< GENERATION >>>>", g, "\n"
-    # print "\n" 
+
     children.Print() 
 
 # parents.Print()
@@ -38,7 +38,7 @@ for g in range (0,100):
 
 pickle.dump(parents, open('robotdata.p','wb'))
 
-# print "Best: ", parents    
+# print "Best: ", parents.Print()   
 
 parents.Show_Best()
 

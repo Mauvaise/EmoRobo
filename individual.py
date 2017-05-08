@@ -12,7 +12,13 @@ class INDIVIDUAL:
  
         self.genome = numpy.random.random((4, 8)) * 2 - 1 
  
-        self.fitness = 0 
+        self.fitness = 0
+
+        self.fitnessY = 0
+
+        self.fitnessX = 0
+
+        self.pawSensors = list()
 
         self.ID = i
 
@@ -37,9 +43,31 @@ class INDIVIDUAL:
 
         self.sim.Wait_To_Finish()
 
-        y = self.sim.Get_Sensor_Data(sensorID=4) 
+        y = self.sim.Get_Sensor_Data(sensorID=4)
 
-        self.fitness = y[-1]
+        x = self.sim.Get_Sensor_Data(sensorID=5)
+
+        for sn in range(0,4):
+            self.pawSensors.append(self.sim.Get_Sensor_Data(sensorID=sn)[-1])
+
+
+ 
+
+        self.fitnessY = y[-1]
+
+        self.fitnessX = x[-1]
+
+        # print "Y fitness: ", self.fitnessY
+
+        # print "X fitness: ", self.fitnessX
+
+        if self.fitnessY <= 0.5 and self.fitnessX >= 0.5:
+            if all(self.pawSensors) < 0.2:
+                self.fitness = (abs(self.fitnessY) + abs(self.fitnessX))*2
+                print "GOOD", self.fitness
+        else:
+            self.fitness = abs(self.fitnessY) + abs(self.fitnessX) 
+            print "BAD", self.fitness
 
         del self.sim
 
