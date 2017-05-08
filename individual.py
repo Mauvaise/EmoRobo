@@ -14,15 +14,17 @@ class INDIVIDUAL:
  
         self.fitness = 0
 
+        self.fitnessX = 0
+
         self.fitnessY = 0
 
-        self.fitnessX = 0
+        self.ID = i
+
+        self.wagCount = 0
 
         self.pawSensors = list()
 
-        self.tailSensors = list()
 
-        self.ID = i
 
 
     def Start_Evaluation(self, paused, blind):
@@ -45,49 +47,15 @@ class INDIVIDUAL:
 
         self.sim.Wait_To_Finish()
 
-        y = self.sim.Get_Sensor_Data(sensorID=5)
+        self.Get_Fitness_Data()
 
-        x = self.sim.Get_Sensor_Data(sensorID=6)
+        print self.wagCount        
 
-        wagCount = 0
-
-        # counter
-
-        tailWag = list()
-
-        self.tailSensors = self.sim.Get_Sensor_Data(sensorID=4)
-
-        tailWag = self.tailSensors[0:1000:10]
-
-        print tailWag
-
-        # for angle in range(len(self.tailSensor)):
-
-        # abs(first) - 1 + abs(second) - 1 > 5:
-        
-
-
-        for sn in range(0,4):
-            self.pawSensors.append(self.sim.Get_Sensor_Data(sensorID=sn)[-1])
-
-
- 
-
-        self.fitnessY = y[-1]
-
-        self.fitnessX = x[-1]
-
-        # print "Y fitness: ", self.fitnessY
-
-        # print "X fitness: ", self.fitnessX
-
-        if self.fitnessY <= 0.5 and self.fitnessX >= 0.5:
-            if all(self.pawSensors) < 0.2:
+        if self.fitnessY <= 0.3 and self.fitnessX >= 0.5:
+            if all(self.pawSensors) < 0.2 and self.wagCount > 10:
                 self.fitness = (abs(self.fitnessY) + abs(self.fitnessX))*2
-                # print "GOOD", self.fitness
         else:
             self.fitness = abs(self.fitnessY) + abs(self.fitnessX) 
-            # print "BAD", self.fitness
 
         del self.sim
 
@@ -110,6 +78,32 @@ class INDIVIDUAL:
  
     def Print(self): 
         print '[', 'ID:', self.ID, 'Fitness:', self.fitness, ']', 
+
+
+    def Get_Fitness_Data(self):
+        y = self.sim.Get_Sensor_Data(sensorID=5)
+
+        x = self.sim.Get_Sensor_Data(sensorID=6)
+
+        tailSensors = self.sim.Get_Sensor_Data(sensorID=4)
+
+        tailWag = tailSensors[0:1000:10]
+
+        for sn in range(0,4):
+            self.pawSensors.append(self.sim.Get_Sensor_Data(sensorID=sn)[-1])
+
+        self.fitnessY = y[-1]
+
+        self.fitnessX = x[-1]
+
+        for i in range(0,99):
+            wagDiff = abs(tailWag[i] - tailWag[i + 1])
+            if wagDiff > 0.4:
+                self.wagCount += 1
+            i += 2
+
+
+
 
         
         

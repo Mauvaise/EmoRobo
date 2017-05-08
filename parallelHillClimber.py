@@ -19,7 +19,7 @@ parents = POPULATION(con.PopSize)
 
 parents.Evaluate() 
   
-for g in range (0,10): 
+for g in range (0,100): 
 
     children = copy.deepcopy(parents) 
  

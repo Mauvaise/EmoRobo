@@ -41,7 +41,7 @@ class ROBOT:
         sim.Send_Cylinder(objectID=8, x=-con.Leg_Offset, y=-1.5 * (con.Leg), z=0.5 * con.Leg + con.Radius, 
                           r1=0, r2=0, r3=1, length=con.Leg, radius=con.Radius, r=1, g=0, b=1) 
         #Robot tail
-        sim.Send_Cylinder(objectID=9, x=-con.Leg*1.8, y=0, z=con.Leg + con.Radius*2, 
+        sim.Send_Cylinder(objectID=9, x=-con.Leg*1.9, y=0, z=con.Leg + con.Radius*2, 
                   r1=1, r2=0, r3=0, length=con.Leg, radius=0.02, r=0.5, g=0.5, b=0.5) 
         #Robot neck
         sim.Send_Cylinder(objectID=10, x=con.Leg, y=0, z= 1.4*con.Leg + con.Radius, 
