@@ -1,4 +1,4 @@
-PopSize = 10
+PopSize = 1
 
 Paused = False
 

@@ -36,8 +36,6 @@ class PYROSIM:
 
 	def Get_Sensor_Data(self,sensorID=0,s=0):
 
-
-
 		return self.dataFromPython[sensorID,s,:]
 
 	def Send_Bias_Neuron(self, neuronID = 0 ):

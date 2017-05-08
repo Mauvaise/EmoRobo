@@ -13,13 +13,13 @@ import pickle
 # robotData = pickle.load(f)
 # f.close()
 
+# parents = robotData
+
 parents = POPULATION(con.PopSize)
 
-# parents = robotData
- 
 parents.Evaluate() 
   
-for g in range (0,50): 
+for g in range (0,10): 
 
     children = copy.deepcopy(parents) 
  
@@ -31,7 +31,7 @@ for g in range (0,50):
  
     print "<<<< GENERATION >>>>", g, "\n"
 
-    children.Print() 
+    # children.Print() 
 
 # parents.Print()
 
