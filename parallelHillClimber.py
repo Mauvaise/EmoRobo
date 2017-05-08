@@ -8,19 +8,18 @@ import constants as con
 from smile_detect import SMILE
 import pickle
 
-fileName ='robotdata.p'
-f = open(fileName,'r')
-robotData = pickle.load(f)
-f.close()
+# fileName ='robotdata.p'
+# f = open(fileName,'r')
+# robotData = pickle.load(f)
+# f.close()
 
+parents = POPULATION(con.PopSize)
 
-# parents = POPULATION() 
-
-parents = robotData
+# parents = robotData
  
-# parents.Evaluate() 
+parents.Evaluate() 
   
-for g in range (0,1): 
+for g in range (0,100): 
 
     children = copy.deepcopy(parents) 
  
@@ -30,19 +29,18 @@ for g in range (0,1):
  
     parents.Replace_With(children) 
  
-    print g, 
+    print "<<<< GENERATION >>>>", g, "\n"
+    # print "\n" 
+    children.Print() 
 
-parents.Print()
+# parents.Print()
+
 
 pickle.dump(parents, open('robotdata.p','wb'))
 
-
-
-
-
 # print "Best: ", parents    
 
-# parents.Show_Best()
+parents.Show_Best()
 
  
 

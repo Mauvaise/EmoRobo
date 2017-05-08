@@ -25,7 +25,7 @@ class INDIVIDUAL:
  
         self.sim.Start()
 
-        print 'Current eval ID', self.ID
+        # print 'Current eval ID', self.ID
 
         # smile_detect = SMILE()
 
@@ -39,7 +39,7 @@ class INDIVIDUAL:
 
         y = self.sim.Get_Sensor_Data(sensorID=4) 
 
-        # self.fitness = y[-1]
+        self.fitness = y[-1]
 
         del self.sim
 

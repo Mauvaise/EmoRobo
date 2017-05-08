@@ -25,14 +25,14 @@ class POPULATION:
     for i in self.population: 
       self.population[i].Start_Evaluation(con.Paused, con.Blind)
 
-    smile_detect = SMILE()
+    # smile_detect = SMILE()
 
-    smile_detect.Start_Smile_Evaluation(con.evaluationTime) 
+    # smile_detect.Start_Smile_Evaluation(con.evaluationTime) 
  
     for i in self.population: 
       self.population[i].Compute_Fitness()
 
-      self.population[i].fitness = smile_detect.Send_Total_Smiles()
+      # self.population[i].fitness = smile_detect.Send_Total_Smiles()
       
  
   def Mutate(self): 
@@ -41,13 +41,17 @@ class POPULATION:
  
   def Replace_With(self,other): 
     for i in self.population: 
-       
-      if (self.population[i].fitness < other.population[i].fitness): 
+      if (self.population[i].fitness > other.population[i].fitness): 
         self.population[i] = other.population[i]
         
 
   def Show_Best(self):
+    best = INDIVIDUAL(-1)
+
     for i in self.population:
-      print "Best robot being displayed:", self.population[i].fitness
-      self.population[i].Start_Evaluation(True, False)
+      if best.fitness > self.population[i].fitness:
+        best = self.population[i]
+
+    print "Fitness of best robot being displayed:", best.fitness
+    best.Start_Evaluation(True, False)
 
