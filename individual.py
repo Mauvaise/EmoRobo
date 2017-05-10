@@ -10,7 +10,7 @@ from smile_detect import SMILE
 class INDIVIDUAL: 
     def __init__(self, i): 
  
-        self.genome = numpy.random.random((6, 10)) * 2 - 1 
+        self.genome = numpy.random.random((7, 11)) * 2 - 1 
  
         self.fitness = 0
 
@@ -56,9 +56,9 @@ class INDIVIDUAL:
 
     def Mutate(self): 
  
-        geneToMutateX = random.randint(0,5) 
+        geneToMutateX = random.randint(0,6) 
  
-        geneToMutateY = random.randint(0,9)         
+        geneToMutateY = random.randint(0,10)         
  
         self.genome[geneToMutateX,geneToMutateY] = random.gauss(self.genome[geneToMutateX,geneToMutateY],  math.fabs(self.genome[geneToMutateX,geneToMutateY])) 
          
@@ -75,37 +75,13 @@ class INDIVIDUAL:
 
     def Get_Fitness_Data(self):
 
-        light = self.sim.Get_Sensor_Data(sensorID=7)
+        light = self.sim.Get_Sensor_Data(sensorID=6)
+
+        tailSensors = self.sim.Get_Sensor_Data(sensorID=4)
         
         self.fitnessLight = light[-1]
 
-        y = self.sim.Get_Sensor_Data(sensorID=5)
-
-        x = self.sim.Get_Sensor_Data(sensorID=6)
-
-        tailSensors = self.sim.Get_Sensor_Data(sensorID=4)
-
         tailWag = tailSensors[0:1000:10]
-
-        # pawSensors = list()
-
-        # for sn in range(0,4):
-        #     pawSensors.append(self.sim.Get_Sensor_Data(sensorID=sn)[-1])
-
-        # print pawSensors
-
-        # if sum(pawSensors) >= 3:
-        #     self.goodPaws.append(1)
-
-        # else:
-        #     self.goodPaws.append(0)
-
-
-        # print "Good paws", self.goodPaws
-
-        self.fitnessY = y[-1]
-
-        self.fitnessX = x[-1]
 
         for i in range(0,99):
             wagDiff = abs(tailWag[i] - tailWag[i + 1])

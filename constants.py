@@ -12,4 +12,4 @@ Radius = Leg/5
 
 Leg_Offset = 0.15
 
-Gens = 100
+Gens = 10
