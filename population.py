@@ -14,8 +14,6 @@ class POPULATION:
     for i in range(0, popSize): 
       self.population[i] = INDIVIDUAL(i) 
 
-    # self.population[0] = self.robotData
-
  
   def Print(self): 
     for i in self.population: 

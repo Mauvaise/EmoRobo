@@ -24,9 +24,6 @@ class INDIVIDUAL:
 
         self.fitnessLight = 0
 
-        # self.goodPaws = list()
-
-        # self.pawSensors = list()
 
     def Start_Evaluation(self, paused, blind):
 
@@ -35,8 +32,6 @@ class INDIVIDUAL:
         robot = ROBOT(self.sim, self.genome) 
  
         self.sim.Start()
-
-        # print 'Current eval ID', self.ID
 
         # smile_detect = SMILE()
 
@@ -85,7 +80,6 @@ class INDIVIDUAL:
 
         for i in range(0,99):
             wagDiff = abs(tailWag[i] - tailWag[i + 1])
-            # print "Wag Oscillation: ", wagDiff
             if wagDiff > 0.6:
                 self.wagCount += 1
             i += 2
@@ -94,7 +88,11 @@ class INDIVIDUAL:
 
         print "Light: ", self.fitnessLight
 
-        self.fitness = (self.fitnessLight + (self.wagCount * 0.001))
+        if self.wagCount <= 100:
+            self.fitness = (self.fitnessLight + (self.wagCount * 0.01))
+        else:
+            self.fitness = (self.fitnessLight + (self.wagCount * 0.005))
+
 
 
         

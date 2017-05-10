@@ -35,9 +35,7 @@ for g in range (0, con.Gens+1):
  
     print "<<<< GENERATION >>>>", g, "\n"
 
-    children.Print() 
-
-    # print "fitness list = ", fitnessList
+    # children.Print() 
 
 # parents.Print()
 
@@ -56,11 +54,11 @@ pn = fig.add_subplot(111)
 
 plt.plot(fitnessList)
 
-plt.ylabel('fitness')
+plt.ylabel('Fitness')
 
-plt.xlabel('generations')
+plt.xlabel('Generations')
 
-pn.set_ylim(0,+5)
+pn.set_ylim(0,+4)
 
 pn.set_xlim(0,con.Gens)
 

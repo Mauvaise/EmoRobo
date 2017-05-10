@@ -15,44 +15,44 @@ class ROBOT:
         # sim.Send_Box(objectID=0, x=0, y=0, z=con.Leg + con.Radius, length=2 *con.Leg, 
         #              width=con.Leg, height=2 * con.Radius, r=0.5, g=0.5, b=0.5)
         sim.Send_Cylinder(objectID=0, x=0, y=0, z=con.Leg + con.Radius,
-                     r1=1, r2=0, r3=0, length=1.8 *con.Leg, radius=con.Leg/1.8, r=0.3, g=0.2, b=0.2)
+                     r1=1, r2=0, r3=0, length=1.8 *con.Leg, radius=con.Leg/1.8, r=0.5, g=0.5, b=0.5)
         #Dark Red top 
         sim.Send_Cylinder(objectID=1, x=con.Leg_Offset, y=con.Leg, z=con.Leg + con.Radius, 
-                          r1=0, r2=1, r3=0, length=con.Leg, radius=con.Radius, r=0.3, g=0.2, b=0.2)
+                          r1=0, r2=1, r3=0, length=con.Leg, radius=con.Radius, r=0.5, g=0, b=0)
         #Dark Green top
         sim.Send_Cylinder(objectID=2, x=-con.Leg_Offset, y=con.Leg, z=con.Leg + con.Radius, 
-                          r1=0, r2=1, r3=0, length=con.Leg, radius=con.Radius, r=0.3, g=0.2, b=0.2) 
+                          r1=0, r2=1, r3=0, length=con.Leg, radius=con.Radius, r=0, g=0.5, b=0) 
         #Dark Blue top
         sim.Send_Cylinder(objectID=3, x=con.Leg_Offset, y=-con.Leg, z=con.Leg + con.Radius, 
-                          r1=0, r2=1, r3=0, length=con.Leg, radius=con.Radius, r=0.3, g=0.2, b=0.2) 
+                          r1=0, r2=1, r3=0, length=con.Leg, radius=con.Radius, r=0, g=0, b=0.5) 
         #Dark Purple top
         sim.Send_Cylinder(objectID=4, x=-con.Leg_Offset, y=-con.Leg, z=con.Leg + con.Radius, 
-                          r1=0, r2=1, r3=0, length=con.Leg, radius=con.Radius, r=0.3, g=0.2, b=0.2) 
+                          r1=0, r2=1, r3=0, length=con.Leg, radius=con.Radius, r=0.5, g=0, b=0.5) 
         #Light Red bottom
         sim.Send_Cylinder(objectID=5, x=con.Leg_Offset, y=1.5 * (con.Leg), z=0.5 * con.Leg + con.Radius, 
-                          r1=0, r2=0, r3=1, length=con.Leg, radius=con.Radius, r=0.3, g=0.2, b=0.2) 
+                          r1=0, r2=0, r3=1, length=con.Leg, radius=con.Radius, r=1, g=0, b=0) 
         #Light Green bottom
         sim.Send_Cylinder(objectID=6, x=-con.Leg_Offset, y=1.5 * (con.Leg), z=0.5 * con.Leg + con.Radius, 
-                          r1=0, r2=0, r3=1, length=con.Leg, radius=con.Radius, r=0.3, g=0.2, b=0.2) 
+                          r1=0, r2=0, r3=1, length=con.Leg, radius=con.Radius, r=0, g=1, b=0) 
         #Light Blue bottom
         sim.Send_Cylinder(objectID=7, x=con.Leg_Offset, y=-1.5 * (con.Leg), z=0.5 * con.Leg + con.Radius, 
-                          r1=0, r2=0, r3=1, length=con.Leg, radius=con.Radius, r=0.3, g=0.2, b=0.2) 
+                          r1=0, r2=0, r3=1, length=con.Leg, radius=con.Radius, r=0, g=0, b=1) 
         #Light Purple bottom
         sim.Send_Cylinder(objectID=8, x=-con.Leg_Offset, y=-1.5 * (con.Leg), z=0.5 * con.Leg + con.Radius, 
-                          r1=0, r2=0, r3=1, length=con.Leg, radius=con.Radius, r=0.3, g=0.2, b=0.2) 
+                          r1=0, r2=0, r3=1, length=con.Leg, radius=con.Radius, r=1, g=0, b=1) 
         #Robot tail
         sim.Send_Cylinder(objectID=9, x=-con.Leg*1.9, y=0, z=con.Leg + con.Radius*2, 
-                  r1=1, r2=0, r3=0, length=con.Leg, radius=0.02, r=0.3, g=0.2, b=0.2) 
+                  r1=1, r2=0, r3=0, length=con.Leg, radius=0.02, r=0.5, g=0.5, b=0.5) 
         #Robot neck
         sim.Send_Cylinder(objectID=10, x=con.Leg*1.1, y=0, z= 1.4*con.Leg + con.Radius, 
-                  r1=0.5, r2=0, r3=0.5, length=con.Leg, radius=con.Radius*1.2, r=0.3, g=0.2, b=0.2) 
+                  r1=0.5, r2=0, r3=0.5, length=con.Leg, radius=con.Radius*1.2, r=0.5, g=0.5, b=0.5) 
         #Robot head
         sim.Send_Cylinder(objectID=11, x=con.Leg*1.7, y=0, z=1.7 * con.Leg + con.Radius, 
-                  r1=1, r2=0, r3=0, length=con.Radius*2, radius=con.Radius*1.5, r=0.3, g=0.2, b=0.2) 
+                  r1=1, r2=0, r3=0, length=con.Radius*2, radius=con.Radius*1.5, r=0.5, g=0.5, b=0.5) 
 
         #Light Source
         sim.Send_Box(objectID=12, x=2, y=-2, z=con.Radius, length=con.Leg, 
-                width=con.Leg, height=con.Leg, r=0.3, g=0.2, b=0.2)
+                width=con.Leg, height=con.Leg, r=0.5, g=0.5, b=0.5)
 
 
 
