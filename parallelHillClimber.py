@@ -60,7 +60,7 @@ plt.ylabel('fitness')
 
 plt.xlabel('generations')
 
-pn.set_ylim(0,+1)
+pn.set_ylim(0,+5)
 
 pn.set_xlim(0,con.Gens)
 

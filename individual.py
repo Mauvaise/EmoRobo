@@ -10,7 +10,7 @@ from smile_detect import SMILE
 class INDIVIDUAL: 
     def __init__(self, i): 
  
-        self.genome = numpy.random.random((5, 9)) * 2 - 1 
+        self.genome = numpy.random.random((6, 10)) * 2 - 1 
  
         self.fitness = 0
 
@@ -56,9 +56,9 @@ class INDIVIDUAL:
 
     def Mutate(self): 
  
-        geneToMutateX = random.randint(0,4) 
+        geneToMutateX = random.randint(0,5) 
  
-        geneToMutateY = random.randint(0,8)         
+        geneToMutateY = random.randint(0,9)         
  
         self.genome[geneToMutateX,geneToMutateY] = random.gauss(self.genome[geneToMutateX,geneToMutateY],  math.fabs(self.genome[geneToMutateX,geneToMutateY])) 
          
@@ -92,6 +92,8 @@ class INDIVIDUAL:
         # for sn in range(0,4):
         #     pawSensors.append(self.sim.Get_Sensor_Data(sensorID=sn)[-1])
 
+        # print pawSensors
+
         # if sum(pawSensors) >= 3:
         #     self.goodPaws.append(1)
 
@@ -116,7 +118,7 @@ class INDIVIDUAL:
 
         print "Light: ", self.fitnessLight
 
-        self.fitness = (self.fitnessLight + (self.wagCount * 0.005))
+        self.fitness = (self.fitnessLight + (self.wagCount * 0.001))
 
 
         

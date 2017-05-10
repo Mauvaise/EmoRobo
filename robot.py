@@ -87,7 +87,7 @@ class ROBOT:
         sim.Send_Joint(jointID=8, firstObjectID=0, secondObjectID=9, x=-con.Leg*1.8/2, y=0, z=con.Leg + con.Radius*2, n1=0, n2=0, n3=1, speed = 3.0) 
 
         #Body to neck
-        sim.Send_Joint(jointID=9, firstObjectID=0, secondObjectID=10, x=con.Leg/2, y=0, z=1.4*con.Leg + con.Radius, n1=0, n2=0, n3=1) 
+        sim.Send_Joint(jointID=9, firstObjectID=0, secondObjectID=10, x=con.Leg/2, y=0, z=1.5*con.Leg + con.Radius, n1=0, n2=0, n3=1) 
 
         #Neck to head
         sim.Send_Joint(jointID=10, firstObjectID=10, secondObjectID=11, x=con.Leg/2, y=0, z=1.6 * con.Leg + con.Radius, n1=1, n2=0, n3=0) 
@@ -102,8 +102,8 @@ class ROBOT:
         sim.Send_Touch_Sensor(sensorID=2, objectID=7) 
         sim.Send_Touch_Sensor(sensorID=3, objectID=8)
         sim.Send_Proprioceptive_Sensor(sensorID=4, jointID=8)
-        sim.Send_Position_Sensor(sensorID=5, objectID=0)
-        sim.Send_Position_Sensor(sensorID=6, objectID=10)
+        sim.Send_Position_Sensor(sensorID=5, objectID=10)
+        sim.Send_Position_Sensor(sensorID=6, objectID=0)
         sim.Send_Light_Sensor(sensorID=7, objectID=10)
         sim.Send_Light_Source(objectIndex=12)
 
@@ -112,18 +112,18 @@ class ROBOT:
     #Neurons
     def Send_Neurons(self, sim):
         #Sensor neurons
-        for sn in range(0, 5): 
+        for sn in range(0, 6): 
             sim.Send_Sensor_Neuron(neuronID=sn, sensorID=sn)
 
 
         #Motor neurons
-        for mn in range(0,9): 
-            sim.Send_Motor_Neuron(neuronID=mn+5, jointID=mn, tau=0.3) 
+        for mn in range(0,10): 
+            sim.Send_Motor_Neuron(neuronID=mn+6, jointID=mn, tau=0.3) 
 
 
     #Synapses
     def Send_Synapses(self, sim, wts): 
-        for s in range(0, 5): 
-          for v in range(0,9): 
+        for s in range(0, 6): 
+          for v in range(0,10): 
             sim.Send_Synapse(sourceNeuronID=s, targetNeuronID= v + 5, weight=wts[s][v]) 
 
