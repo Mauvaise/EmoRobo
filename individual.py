@@ -4,7 +4,7 @@ import random
 import math 
 import numpy
 import constants as con
-
+import matplotlib.pyplot as plt
 from smile_detect import SMILE
  
 class INDIVIDUAL: 
@@ -22,10 +22,11 @@ class INDIVIDUAL:
 
         self.wagCount = 0
 
-        self.pawSensors = list()
+        self.fitnessLight = 0
 
+        # self.goodPaws = list()
 
-
+        # self.pawSensors = list()
 
     def Start_Evaluation(self, paused, blind):
 
@@ -41,25 +42,17 @@ class INDIVIDUAL:
 
         # smile_detect.Start_Smile_Evaluation(con.evaluationTime)
 
-
-
     def Compute_Fitness(self):
 
         self.sim.Wait_To_Finish()
 
         self.Get_Fitness_Data()
 
-        print self.wagCount        
-
-        if self.fitnessY <= 0.3 and self.fitnessX >= 0.5:
-            if all(self.pawSensors) < 0.2 and self.wagCount > 10:
-                self.fitness = (abs(self.fitnessY) + abs(self.fitnessX))*2
-        else:
-            self.fitness = abs(self.fitnessY) + abs(self.fitnessX) 
-
         del self.sim
 
-        
+        return self.fitness
+
+
 
     def Mutate(self): 
  
@@ -81,6 +74,11 @@ class INDIVIDUAL:
 
 
     def Get_Fitness_Data(self):
+
+        light = self.sim.Get_Sensor_Data(sensorID=7)
+        
+        self.fitnessLight = light[-1]
+
         y = self.sim.Get_Sensor_Data(sensorID=5)
 
         x = self.sim.Get_Sensor_Data(sensorID=6)
@@ -89,8 +87,19 @@ class INDIVIDUAL:
 
         tailWag = tailSensors[0:1000:10]
 
-        for sn in range(0,4):
-            self.pawSensors.append(self.sim.Get_Sensor_Data(sensorID=sn)[-1])
+        # pawSensors = list()
+
+        # for sn in range(0,4):
+        #     pawSensors.append(self.sim.Get_Sensor_Data(sensorID=sn)[-1])
+
+        # if sum(pawSensors) >= 3:
+        #     self.goodPaws.append(1)
+
+        # else:
+        #     self.goodPaws.append(0)
+
+
+        # print "Good paws", self.goodPaws
 
         self.fitnessY = y[-1]
 
@@ -98,11 +107,16 @@ class INDIVIDUAL:
 
         for i in range(0,99):
             wagDiff = abs(tailWag[i] - tailWag[i + 1])
-            if wagDiff > 0.4:
+            # print "Wag Oscillation: ", wagDiff
+            if wagDiff > 0.6:
                 self.wagCount += 1
             i += 2
 
+        print "Wags: ", self.wagCount  
 
+        print "Light: ", self.fitnessLight
+
+        self.fitness = (self.fitnessLight + (self.wagCount * 0.005))
 
 
         

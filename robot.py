@@ -50,6 +50,11 @@ class ROBOT:
         sim.Send_Cylinder(objectID=11, x=con.Leg*1.5, y=0, z=1.6 * con.Leg + con.Radius, 
                   r1=1, r2=0, r3=0, length=con.Radius*2, radius=con.Radius*1.5, r=0.5, g=0.5, b=0.5) 
 
+        #Light Source
+        sim.Send_Box(objectID=12, x=2, y=-2, z=con.Radius, length=con.Leg, 
+                width=con.Leg, height=con.Leg, r=0.5, g=0.5, b=0.5)
+
+
 
 
     #Joints
@@ -99,6 +104,9 @@ class ROBOT:
         sim.Send_Proprioceptive_Sensor(sensorID=4, jointID=8)
         sim.Send_Position_Sensor(sensorID=5, objectID=0)
         sim.Send_Position_Sensor(sensorID=6, objectID=10)
+        sim.Send_Light_Sensor(sensorID=7, objectID=10)
+        sim.Send_Light_Source(objectIndex=12)
+
 
  
     #Neurons

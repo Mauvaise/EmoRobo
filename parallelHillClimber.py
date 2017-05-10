@@ -7,6 +7,8 @@ import copy
 import constants as con
 from smile_detect import SMILE
 import pickle
+import matplotlib.pyplot as plt
+
 
 # fileName ='robotdata.p'
 # f = open(fileName,'r')
@@ -18,22 +20,27 @@ import pickle
 parents = POPULATION(con.PopSize)
 
 parents.Evaluate() 
+
+fitnessList = list()
   
-for g in range (0,100): 
+for g in range (0, con.Gens+1): 
 
     children = copy.deepcopy(parents) 
  
     children.Mutate() 
- 
+
     children.Evaluate()
  
-    parents.Replace_With(children) 
+    fitnessList.append(parents.Replace_With(children))
  
     print "<<<< GENERATION >>>>", g, "\n"
 
-    # children.Print() 
+    children.Print() 
+
+    # print "fitness list = ", fitnessList
 
 # parents.Print()
+
 
 
 pickle.dump(parents, open('robotdata.p','wb'))
@@ -41,6 +48,24 @@ pickle.dump(parents, open('robotdata.p','wb'))
 # print "Best: ", parents.Print()   
 
 parents.Show_Best()
+# parents.Show_Best()
+
+fig = plt.figure()
+
+pn = fig.add_subplot(111)
+
+plt.plot(fitnessList)
+
+plt.ylabel('fitness')
+
+plt.xlabel('generations')
+
+pn.set_ylim(0,+1)
+
+pn.set_xlim(0,con.Gens)
+
+plt.show()
+
 
  
 
@@ -50,12 +75,3 @@ parents.Show_Best()
  
 # # print sensorData 
  
-# # f = plt.figure() 
- 
-# # pn = f.add_subplot(111) 
- 
-# # plt.plot(sensorData) 
- 
-# # pn.set_ylim(-2,+2) 
- 
-# # plt.show

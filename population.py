@@ -8,6 +8,8 @@ class POPULATION:
 
     self.population = {} 
 
+    self.fitnessList = list()
+
  
     for i in range(0, popSize): 
       self.population[i] = INDIVIDUAL(i) 
@@ -30,8 +32,8 @@ class POPULATION:
     # smile_detect.Start_Smile_Evaluation(con.evaluationTime) 
  
     for i in self.population: 
-      self.population[i].Compute_Fitness()
-
+      fitness = self.population[i].Compute_Fitness()
+    # return fitness
       # self.population[i].fitness = smile_detect.Send_Total_Smiles()
       
  
@@ -41,8 +43,10 @@ class POPULATION:
  
   def Replace_With(self,other): 
     for i in self.population: 
+      print "Fitness in Replace_With", self.population[i].fitness
       if (self.population[i].fitness < other.population[i].fitness): 
         self.population[i] = other.population[i]
+      return self.population[i].fitness
         
 
   def Show_Best(self):
@@ -54,4 +58,7 @@ class POPULATION:
 
     print "Fitness of best robot being displayed:", best.fitness
     best.Start_Evaluation(True, False)
+
+
+
 
