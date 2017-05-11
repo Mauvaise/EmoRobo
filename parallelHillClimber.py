@@ -46,23 +46,23 @@ pickle.dump(parents, open('robotdata.p','wb'))
 # print "Best: ", parents.Print()   
 
 parents.Show_Best()
-# parents.Show_Best()
+parents.Show_Best()
 
-fig = plt.figure()
+# fig = plt.figure()
 
-pn = fig.add_subplot(111)
+# pn = fig.add_subplot(111)
 
-plt.plot(fitnessList)
+# plt.plot(fitnessList)
 
-plt.ylabel('Fitness')
+# plt.ylabel('Fitness')
 
-plt.xlabel('Generations')
+# plt.xlabel('Generations')
 
-pn.set_ylim(0,+4)
+# pn.set_ylim(0,+4)
 
-pn.set_xlim(0,con.Gens)
+# pn.set_xlim(0,con.Gens)
 
-plt.show()
+# plt.show()
 
 
  
